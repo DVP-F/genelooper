@@ -1,6 +1,7 @@
 # from __future__ import annotations
 import random
 
+# noinspection PyTypeChecker
 class Creature:
 	__slots__ = ["inheritance", "genes"]
 
