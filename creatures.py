@@ -3,7 +3,6 @@ import random
 
 # noinspection PyTypeChecker
 class Genes:
-	__slots__ = ["genevalues"]
 	genevalues = {
 		'<': { # in principle equal to a chr() string - one character
 			"agr": 0.0,	# Aggression 
@@ -108,7 +107,7 @@ class Genes:
 
 # noinspection PyTypeChecker
 class Creature:
-	__slots__ = ["inheritance", "genes"]
+	__slots__ = ["inheritance", "genes", ""]
 
 	def __init__(self, genes: str = ""):
 		self.inheritance = []
@@ -116,4 +115,4 @@ class Creature:
 		self.mutate()
 
 	def mutate(self):
-		...
+		return
