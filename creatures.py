@@ -4,125 +4,56 @@ import random
 # noinspection PyTypeChecker
 class Genes:
 	stats = [
-		"agr"	,
-		"str"	,
-		"mut"	,
-		"val"	,
-		"sth"	]
-
-	genevalues = {
-		'<': { # in principle equal to a chr() string - one character
-			"agr": 0.0,	# Aggression 
-			"str": 0.0,	# Strength 
-			"mut": 0.0, # Mutation 
-			"val": 0.0,	# Value 
-			"sth": 0.0	# Stealth 
-		},
-		'>': {
-			"agr": 0.0,
-			"str": 0.0,
-			"mut": 0.0,
-			"val": 0.0,
-			"sth": 0.0
-		},
-		'@': {
-			"agr": 0.0,
-			"str": 0.0,
-			"mut": 0.0,
-			"val": 0.0,
-			"sth": 0.0
-		},
-		'#': {
-			"agr": 0.0,
-			"str": 0.0,
-			"mut": 0.0,
-			"val": 0.0,
-			"sth": 0.0
-		},
-		'¤': {
-			"agr": 0.0,
-			"str": 0.0,
-			"mut": 0.0,
-			"val": 0.0,
-			"sth": 0.0
-		},
-		'$': {
-			"agr": 0.0,
-			"str": 0.0,
-			"mut": 0.0,
-			"val": 0.0,
-			"sth": 0.0
-		},
-		'%': {
-			"agr": 0.0,
-			"str": 0.0,
-			"mut": 0.0,
-			"val": 0.0,
-			"sth": 0.0
-		},
-		'&': {
-			"agr": 0.0,
-			"str": 0.0,
-			"mut": 0.0,
-			"val": 0.0,
-			"sth": 0.0
-		},
-		'|': {
-			"agr": 0.0,
-			"str": 0.0,
-			"mut": 0.0,
-			"val": 0.0,
-			"sth": 0.0
-		},
-		'§': {
-			"agr": 0.0,
-			"str": 0.0,
-			"mut": 0.0,
-			"val": 0.0,
-			"sth": 2.8
-		},
-		'^': {
-			"agr": 3.0,
-			"str": 6.1,
-			"mut": 5.9,
-			"val": 11.6,
-			"sth": 13.4
-		},
-		'µ': {
-			"agr": 5.8,
-			"str": 18.1,
-			"mut": 8.2,
-			"val": 11.5,
-			"sth": 7.3
-		},
-		'ω': { # UωU 
-			"agr": 9.7,
-			"str": 12.3,
-			"mut": 0.1,
-			"val": 20.0,
-			"sth": 4.6
-		},
-		'!': {
-			"agr": 13.2,
-			"str": 14.7,
-			"mut": 18.0,
-			"val": 9.4,
-			"sth": 0.0
-		},
-		}
+		"agr"	,	# Aggression
+		"str"	,	# Strength
+		"mut"	,   # Mutation
+		"val"	,	# Value
+		"sth"	]	# Stealth
 
 	@staticmethod
 	def _make_stats_dict(*, values: list[float,] = None):
 		ret = {}
-		for i in Genes.stats:
-			ret += {Genes.stats[i]: 0.0 if values == None else values[i],}
+		for i in Genes.stats: # maps values to Genes.stats one-to-one
+			ret += {Genes.stats[i]: 0.0 if values is None else float(abs(values[i])) if len(values) >= i-1 else 0.0,}
 		return ret
+
+	genevalues = {
+		'<': # in principle equal to a chr() string - one character
+			_make_stats_dict(),
+		'>': 
+			_make_stats_dict(),
+		'@': 
+			_make_stats_dict(),
+		'#': 
+			_make_stats_dict(),
+		'¤': 
+			_make_stats_dict(),
+		'$': 
+			_make_stats_dict(),
+		'%': 
+			_make_stats_dict(),
+		'&': 
+			_make_stats_dict(),
+		'|': 
+			_make_stats_dict(),
+		'§':
+			_make_stats_dict(values = [0.0, 0.0, 0.0, 0.0, 2.8]),
+		'^':
+			_make_stats_dict(values = [3.0, 6.1, 5.9, 11.6, 13.4]),
+		'µ':
+			_make_stats_dict(values = [5.8, 18.1, 8.2, 11.5, 7.3]),
+		'ω':
+			_make_stats_dict(values = [9.7, 12.3, 0.1, 20.0, 4.6]), # UωU
+		'!':
+			_make_stats_dict(values = [13.2, 14.7, 18.0, 9.4, 0.0])
+		}
 
 
 # noinspection PyTypeChecker
 class Creature:
 	__slots__ = ["inheritance", "genes", "stats"]
 
+	@classmethod
 	def __init__(self, genes: str = ""):
 		self.inheritance = []
 		self.genes = genes
@@ -139,6 +70,7 @@ class Creature:
 			c = int((self.stats[i] % 1) * 10) / 10
 			self.stats[i] = (self.stats[i] // 1) + c
 
+	@classmethod
 	def mutate(self):
 		return
 
