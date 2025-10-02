@@ -19,21 +19,21 @@ class Genes:
 
 	genevalues = {
 		'<': # in principle equal to a chr() string - one character
-			_make_stats_dict(values = [0.0, 0.0, 0.0, 0.0, 0.0]), # by convention  0.0 <= x <= 20.0
+			_make_stats_dict(values = [2.9, 7.3, 14.3, 5.2, 14.2]), # by convention  0.0 <= x <= 20.0
 		'>': 
-			_make_stats_dict(values = [0.0, 0.0, 0.0, 0.0, 0.0]),
+			_make_stats_dict(values = [18.2, 15.5, 17.9, 4.4, 15.0]),
 		'@': 
-			_make_stats_dict(values = [0.0, 0.0, 0.0, 0.0, 0.0]),
+			_make_stats_dict(values = [3.6, 9.1, 2.4, 5.0, 13.8]),
 		'#': 
-			_make_stats_dict(values = [0.0, 0.0, 0.0, 0.0, 0.0]),
+			_make_stats_dict(values = [9.8, 8.5, 7.8, 11.2, 4.2]),
 		'¤': 
-			_make_stats_dict(values = [0.0, 0.0, 0.0, 0.0, 0.0]),
+			_make_stats_dict(values = [13.4, 2.3, 15.8, 18.3, 17.2]),
 		'$': 
-			_make_stats_dict(values = [0.0, 0.0, 0.0, random.uniform(4.0, 12.0), 2.6]),
+			_make_stats_dict(values = [9.1, 3.8, 6.1, random.uniform(4.0, 12.0), 2.6]),
 		'%': 
-			_make_stats_dict(values = [0.0, 0.0, 0.0, 0.0, 0.0]),
+			_make_stats_dict(values = [11.0, 12.8, 11.5, 19.4, 9.3]),
 		'&': 
-			_make_stats_dict(values = [0.0, 0.0, 0.0, 0.0, 0.0]),
+			_make_stats_dict(values = [2.2, 18.2, 7.6, 10.5, 7.3]),
 		'|': 
 			_make_stats_dict(values = [16.8, 11.0, 4.5, 9.1, 3.9]),
 		'§':
